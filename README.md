@@ -11,6 +11,7 @@
 This repository serves as a practical demonstration of the following in C language:
 * User define funcitons;
 * usage of arrays
+
 **x-------------x-------------x-------------x-------------x-------------x-------------x**
 
 ## Repository Inlcudes In-Lab and Post-Lab Tasks of Lab 08:
