@@ -83,11 +83,11 @@ float calculateBaseCharge(float weight)
 	{
 		charge = 200;
 	}
-	else if (weight <= 5) //weight > 2 and <= 5
+	else if (weight <= 5) 
 	{
 		charge = 400;
 	}
-	else //weight > 5
+	else 
 	{
 		charge = 700;
 	}
@@ -96,7 +96,7 @@ float calculateBaseCharge(float weight)
 
 float calculateDistanceCharge(float distance)
 {
-	//Rs. 20 for every km beyond the first 10 km
+	
 	float charge = 0;
 	if (distance > 10)
 	{
