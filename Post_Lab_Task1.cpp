@@ -13,7 +13,7 @@ int main()
 
 	printf("This is a program written in C to practise 3D arrays (Student Result Analysis)");
 
-	//Taking input (with validation)
+
 	for (s = 0; s < SECTIONS; s++)
 	{
 		for (st = 0; st < STUDENTS; st++)
@@ -34,7 +34,7 @@ int main()
 		}
 	}
 
-	//Calculating total and average of every student
+
 	for (s = 0; s < SECTIONS; s++)
 	{
 		sectionTotal[s] = 0;
@@ -51,7 +51,7 @@ int main()
 		sectionAverage[s] = (float)sectionTotal[s] / (STUDENTS * SUBJECTS);
 	}
 
-	//Displaying total and average
+
 	printf("\n\n----- Total and Average Marks of Each Student -----");
 	for (s = 0; s < SECTIONS; s++)
 	{
@@ -61,7 +61,6 @@ int main()
 		}
 	}
 
-	//Highest scoring student in each section (also handles ties)
 	printf("\n\n----- Highest Scoring Student in Each Section -----");
 	for (s = 0; s < SECTIONS; s++)
 	{
@@ -88,7 +87,6 @@ int main()
 		}
 	}
 
-	//Counting students whose average is at least 50
 	for (s = 0; s < SECTIONS; s++)
 	{
 		for (st = 0; st < STUDENTS; st++)
@@ -108,8 +106,7 @@ int main()
 	{
 		printf("\nAll students have an average of 50 or more");
 	}
-
-	//Section with highest overall average
+	
 	printf("\n\n----- Overall Average of Each Section -----");
 	for (s = 0; s < SECTIONS; s++)
 	{
