@@ -1,64 +1,40 @@
 #include <stdio.h>
 void welcome();
-int getAge();
-float getSalary();
-float getExistingPayments(float salary);
-float calculateRemaining(float salary, float payments);
-int checkAge(int age);
-int checkSalary(float salary);
-int checkRemaining(float salary, float remaining);
-float calculateMaxLoan(float remaining);
-void displayResult(int ageOk, int salaryOk, int remainingOk, float maxLoan);
+float getBasicSalary();
+float getYears();
+int getBonusPercent(float years);
+float calculateBonus(float basicSalary, int bonusPercent);
+float calculateTax(float salaryAfterBonus);
+void displaySalary(float basicSalary, int bonusPercent, float bonus, float tax, float finalSalary);
 
 int main()
 {
-	int age, ageOk, salaryOk, remainingOk;
-	float salary, payments, remaining, maxLoan = 0;
-	printf("This is a program written in C to practise UDFs (Loan Eligibility Checker)");
+	float basicSalary, years, bonus, salaryAfterBonus, tax, finalSalary;
+	int bonusPercent;
+	printf("This is a program written in C to practise UDFs (Employee Salary and Bonus)");
 	welcome();
-	age = getAge();
-	salary = getSalary();
-	payments = getExistingPayments(salary);
-	remaining = calculateRemaining(salary, payments);
-	printf("\n\nRemaining monthly income: Rs. %.2f", remaining);
-
-	ageOk = checkAge(age);
-	salaryOk = checkSalary(salary);
-	remainingOk = checkRemaining(salary, remaining);
-	if (ageOk == 1 && salaryOk == 1 && remainingOk == 1)
-	{
-		maxLoan = calculateMaxLoan(remaining);
-	}
-	displayResult(ageOk, salaryOk, remainingOk, maxLoan);
+	basicSalary = getBasicSalary();
+	years = getYears();
+	bonusPercent = getBonusPercent(years);
+	bonus = calculateBonus(basicSalary, bonusPercent);
+	salaryAfterBonus = basicSalary + bonus;
+	tax = calculateTax(salaryAfterBonus);
+	finalSalary = salaryAfterBonus - tax;
+	displaySalary(basicSalary, bonusPercent, bonus, tax, finalSalary);
 	return 0;
 }
 
 void welcome()
 {
-	printf("\n\n----- Loan Eligibility Checker -----");
+	printf("\n\n----- Employee Salary Calculator -----");
 }
 
-int getAge()
-{
-	int age;
-	do
-	{
-		printf("\nEnter your age: ");
-		scanf("%d", &age);
-		if (age <= 0)
-		{
-			printf("Invalid Age Entered, please try again");
-		}
-	} while (age <= 0);
-	return age;
-}
-
-float getSalary()
+float getBasicSalary()
 {
 	float salary;
 	do
 	{
-		printf("\nEnter your monthly salary: ");
+		printf("\nEnter the basic salary: ");
 		scanf("%f", &salary);
 		if (salary <= 0)
 		{
@@ -68,82 +44,63 @@ float getSalary()
 	return salary;
 }
 
-float getExistingPayments(float salary)
+float getYears()
 {
-	float payments;
+	float years;
 	do
 	{
-		printf("\nEnter your existing monthly loan payments (0 if none): ");
-		scanf("%f", &payments);
-		if (payments < 0)
+		printf("\nEnter the years of service: ");
+		scanf("%f", &years);
+		if (years < 0)
 		{
-			printf("Invalid Payments Entered, they cannot be negative");
+			printf("Invalid Years Entered, they cannot be negative");
 		}
-	} while (payments < 0);
-	return payments;
+	} while (years < 0);
+	return years;
 }
 
-float calculateRemaining(float salary, float payments)
+int getBonusPercent(float years)
 {
-	return salary - payments;
-}
-
-int checkAge(int age)
-{
-	if (age >= 21)
+	int percent;
+	if (years > 5)
 	{
-		return 1;
+		percent = 15;
 	}
-	return 0;
+	else if (years >= 3 && years <= 5)
+	{
+		percent = 10;
+	}
+	else 
+	{
+		percent = 5;
+	}
+	return percent;
 }
 
-int checkSalary(float salary)
+float calculateBonus(float basicSalary, int bonusPercent)
 {
-	if (salary >= 50000)
-	{
-		return 1;
-	}
-	return 0;
+	return basicSalary * bonusPercent / 100;
 }
 
-int checkRemaining(float salary, float remaining)
+float calculateTax(float salaryAfterBonus)
 {
-	
-	if (remaining >= salary * 40 / 100)
+	float tax = 0;
+	if (salaryAfterBonus > 100000)
 	{
-		return 1;
+		tax = salaryAfterBonus * 5 / 100;
 	}
-	return 0;
+	return tax;
 }
 
-float calculateMaxLoan(float remaining)
+void displaySalary(float basicSalary, int bonusPercent, float bonus, float tax, float finalSalary)
 {
-	return remaining * 10;
-}
-
-void displayResult(int ageOk, int salaryOk, int remainingOk, float maxLoan)
-{
-	printf("\n\n----- Result -----");
-	if (ageOk == 1 && salaryOk == 1 && remainingOk == 1)
+	printf("\n\n----- Salary Details -----");
+	printf("\nBasic salary: Rs. %.2f", basicSalary);
+	printf("\nBonus (%d%%): Rs. %.2f", bonusPercent, bonus);
+	printf("\nTax: Rs. %.2f", tax);
+	if (tax == 0)
 	{
-		printf("\nCongratulations! You are ELIGIBLE for a loan");
-		printf("\nMaximum loan amount: Rs. %.2f", maxLoan);
+		printf(" (Salary after bonus does not exceed Rs. 100000, so no tax)");
 	}
-	else
-	{
-		printf("\nSorry, you are NOT ELIGIBLE for a loan");
-		printf("\nReason(s):");
-		if (ageOk == 0)
-		{
-			printf("\n- Age is below 21 years");
-		}
-		if (salaryOk == 0)
-		{
-			printf("\n- Monthly salary is below Rs. 50000");
-		}
-		if (remainingOk == 0)
-		{
-			printf("\n- Less than 40%% of the salary remains after existing payments");
-		}
-	}
+	printf("\nFinal salary: Rs. %.2f", finalSalary);
 }
