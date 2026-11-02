@@ -13,6 +13,7 @@ int main()
 
 	printf("This is a program written in C to practise 3D arrays (Student Result Analysis)");
 
+
 	for (s = 0; s < SECTIONS; s++)
 	{
 		for (st = 0; st < STUDENTS; st++)
@@ -32,6 +33,7 @@ int main()
 			}
 		}
 	}
+
 
 	for (s = 0; s < SECTIONS; s++)
 	{
@@ -85,6 +87,7 @@ int main()
 		}
 	}
 
+
 	for (s = 0; s < SECTIONS; s++)
 	{
 		for (st = 0; st < STUDENTS; st++)
@@ -104,6 +107,7 @@ int main()
 	{
 		printf("\nAll students have an average of 50 or more");
 	}
+
 
 	printf("\n\n----- Overall Average of Each Section -----");
 	for (s = 0; s < SECTIONS; s++)
