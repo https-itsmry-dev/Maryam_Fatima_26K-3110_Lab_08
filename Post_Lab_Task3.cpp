@@ -33,7 +33,6 @@ int main()
 		}
 	}
 
-
 	printf("\n\n----- Average Temperature of Each Patient -----");
 	for (w = 0; w < WARDS; w++)
 	{
@@ -54,6 +53,7 @@ int main()
 			printf("\nWard %d - Patient %d: Average = %.2f C", w + 1, p + 1, average[w][p]);
 		}
 	}
+
 
 	printf("\n\n----- Readings Above 37.5 C -----");
 	for (w = 0; w < WARDS; w++)
@@ -90,7 +90,6 @@ int main()
 		hw = w;
 		printf("\nWard %d: %.2f C (Patient %d, Reading %d)", hw + 1, highest, hp + 1, hr + 1);
 	}
-
 
 	printf("\n\n----- Patients with Average Temperature Above 38 C -----");
 	for (w = 0; w < WARDS; w++)
