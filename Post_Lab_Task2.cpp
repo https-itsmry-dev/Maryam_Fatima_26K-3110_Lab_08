@@ -12,7 +12,6 @@ int main()
 
 	printf("This is a program written in C to practise 3D arrays (Monthly Sales Analysis)");
 
-
 	for (b = 0; b < BRANCHES; b++)
 	{
 		for (p = 0; p < PRODUCTS; p++)
@@ -32,7 +31,6 @@ int main()
 		}
 	}
 
-
 	for (b = 0; b < BRANCHES; b++)
 	{
 		branchTotal[b] = 0;
@@ -41,7 +39,6 @@ int main()
 	{
 		weekTotal[w] = 0;
 	}
-
 
 	for (b = 0; b < BRANCHES; b++)
 	{
@@ -57,7 +54,6 @@ int main()
 		}
 	}
 
-	//Total quantity of each product in each branch
 	printf("\n\n----- Total Quantity Sold for Each Product in Each Branch -----");
 	for (b = 0; b < BRANCHES; b++)
 	{
@@ -122,7 +118,7 @@ int main()
 		}
 	}
 
-	
+
 	printf("\n\n----- Total Quantity Sold by Each Branch -----");
 	for (b = 0; b < BRANCHES; b++)
 	{
