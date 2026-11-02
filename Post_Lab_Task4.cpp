@@ -65,12 +65,12 @@ float calculateBill(int units, int category)
 		{
 			bill = units * 15;
 		}
-		else //units > 100
+		else 
 		{
 			bill = (100 * 15) + ((units - 100) * 20);
 		}
 	}
-	else //commercial
+	else
 	{
 		bill = units * 25;
 	}
