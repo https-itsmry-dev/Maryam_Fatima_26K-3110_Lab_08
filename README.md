@@ -21,3 +21,18 @@ This repository serves as a practical demonstration of the following in C langua
 * **<ins>TASK # 2 :</ins>**(Shopping Management System Using Functions)
 
 **x-------------x-------------x-------------x-------------x-------------x-------------x**
+
+### Post-Lab Tasks of PF_Lab 04 are mentioned below:
+###PART A: THREE-DIMENSIONAL ARRAYS
+* **<ins>TASK # 1 :</ins>** Student Result Analysis
+* **<ins>TASK # 2 :</ins>** Monthly Sales Analysis
+* **<ins>TASK # 3 :</ins>** Hospital Temperature Monitoring
+###PART B: USER-DEFINED FUNCTIONS (UDFs)
+* **<ins>TASK # 4 :</ins>** Electricity Bill Calculator
+* **<ins>TASK # 5 :</ins>** Employee Salary and Bonus
+* **<ins>TASK # 6 :</ins>** Loan Eligibility Checker
+* **<ins>TASK # 7 :</ins>** Number Property Analyzer
+* **<ins>TASK # 8 :</ins>** Delivery Charges Calculator
+* **<ins>TASK # 9 :</ins>** ATM Transaction System
+  
+  
