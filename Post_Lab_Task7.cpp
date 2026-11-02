@@ -67,7 +67,7 @@ int isPalindrome(int number)
 int isPrime(int number)
 {
 	int i;
-	if (number < 2) //1 is not a prime number
+	if (number < 2) 
 	{
 		return 0;
 	}
