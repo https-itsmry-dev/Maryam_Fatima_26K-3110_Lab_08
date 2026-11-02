@@ -17,7 +17,7 @@ int main()
 		displayMenu();
 		if (scanf("%d", &choice) != 1)
 		{
-			clearBuffer(); //removes wrong input such as letters
+			clearBuffer(); 
 			choice = 0;
 		}
 		switch (choice)
