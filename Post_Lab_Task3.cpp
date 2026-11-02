@@ -55,7 +55,6 @@ int main()
 		}
 	}
 
-
 	printf("\n\n----- Readings Above 37.5 C -----");
 	for (w = 0; w < WARDS; w++)
 	{
@@ -69,7 +68,6 @@ int main()
 	{
 		printf("\nNo reading was above 37.5 C");
 	}
-
 
 	printf("\n\n----- Highest Temperature in Each Ward -----");
 	for (w = 0; w < WARDS; w++)
@@ -93,7 +91,7 @@ int main()
 		printf("\nWard %d: %.2f C (Patient %d, Reading %d)", hw + 1, highest, hp + 1, hr + 1);
 	}
 
-	
+
 	printf("\n\n----- Patients with Average Temperature Above 38 C -----");
 	for (w = 0; w < WARDS; w++)
 	{
