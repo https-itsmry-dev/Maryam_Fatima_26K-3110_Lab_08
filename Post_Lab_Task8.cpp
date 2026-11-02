@@ -83,11 +83,11 @@ float calculateBaseCharge(float weight)
 	{
 		charge = 200;
 	}
-	else if (weight <= 5) 
+	else if (weight <= 5) //weight > 2 and <= 5
 	{
 		charge = 400;
 	}
-	else 
+	else //weight > 5
 	{
 		charge = 700;
 	}
