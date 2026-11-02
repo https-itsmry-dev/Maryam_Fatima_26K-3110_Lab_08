@@ -70,7 +70,7 @@ int getBonusPercent(float years)
 	{
 		percent = 10;
 	}
-	else //years < 3
+	else 
 	{
 		percent = 5;
 	}
