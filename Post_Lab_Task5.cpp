@@ -104,3 +104,4 @@ void displaySalary(float basicSalary, int bonusPercent, float bonus, float tax, 
 	}
 	printf("\nFinal salary: Rs. %.2f", finalSalary);
 }
+
