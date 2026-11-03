@@ -11,8 +11,6 @@ int main()
 	int w, p, r, hw, hp, hr, totalAbove = 0, highFeverFound = 0;
 
 	printf("This is a program written in C to practise 3D arrays (Hospital Temperature Monitoring)");
-
-
 	for (w = 0; w < WARDS; w++)
 	{
 		for (p = 0; p < PATIENTS; p++)
@@ -54,7 +52,6 @@ int main()
 		}
 	}
 
-
 	printf("\n\n----- Readings Above 37.5 C -----");
 	for (w = 0; w < WARDS; w++)
 	{
@@ -68,7 +65,6 @@ int main()
 	{
 		printf("\nNo reading was above 37.5 C");
 	}
-
 	printf("\n\n----- Highest Temperature in Each Ward -----");
 	for (w = 0; w < WARDS; w++)
 	{
