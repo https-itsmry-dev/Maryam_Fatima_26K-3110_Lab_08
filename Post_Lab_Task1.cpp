@@ -1,130 +1,140 @@
 #include <stdio.h>
-#define SECTIONS 2
-#define STUDENTS 3
-#define SUBJECTS 4
+#define BRANCHES 2
+#define PRODUCTS 3
+#define WEEKS 4
 int main()
 {
-	int marks[SECTIONS][STUDENTS][SUBJECTS];
-	int total[SECTIONS][STUDENTS];
-	float average[SECTIONS][STUDENTS];
-	int sectionTotal[SECTIONS];
-	float sectionAverage[SECTIONS];
-	int s, st, sub, highestTotal, tieCount, passCount = 0;
+	int sales[BRANCHES][PRODUCTS][WEEKS];
+	int productTotal[BRANCHES][PRODUCTS];
+	int branchTotal[BRANCHES];
+	int weekTotal[WEEKS];
+	int b, p, w, highest, tieCount;
 
-	printf("This is a program written in C to practise 3D arrays (Student Result Analysis)");
+	printf("This is a program written in C to practise 3D arrays (Monthly Sales Analysis)");
 
-
-	for (s = 0; s < SECTIONS; s++)
+	
+	for (b = 0; b < BRANCHES; b++)
 	{
-		for (st = 0; st < STUDENTS; st++)
+		for (p = 0; p < PRODUCTS; p++)
 		{
-			printf("\n\nSection %d - Student %d", s + 1, st + 1);
-			for (sub = 0; sub < SUBJECTS; sub++)
+			for (w = 0; w < WEEKS; w++)
 			{
 				do
 				{
-					printf("\nEnter marks of Subject %d (0 to 100): ", sub + 1);
-					scanf("%d", &marks[s][st][sub]);
-					if (marks[s][st][sub] < 0 || marks[s][st][sub] > 100)
+					printf("\nEnter quantity sold - Branch %d, Product %d, Week %d: ", b + 1, p + 1, w + 1);
+					scanf("%d", &sales[b][p][w]);
+					if (sales[b][p][w] < 0)
 					{
-						printf("Invalid Marks Entered, please try again");
+						printf("Invalid Quantity Entered, it cannot be negative");
 					}
-				} while (marks[s][st][sub] < 0 || marks[s][st][sub] > 100);
+				} while (sales[b][p][w] < 0);
 			}
 		}
 	}
 
-
-	for (s = 0; s < SECTIONS; s++)
+	for (b = 0; b < BRANCHES; b++)
 	{
-		sectionTotal[s] = 0;
-		for (st = 0; st < STUDENTS; st++)
+		branchTotal[b] = 0;
+	}
+	for (w = 0; w < WEEKS; w++)
+	{
+		weekTotal[w] = 0;
+	}
+
+	for (b = 0; b < BRANCHES; b++)
+	{
+		for (p = 0; p < PRODUCTS; p++)
 		{
-			total[s][st] = 0;
-			for (sub = 0; sub < SUBJECTS; sub++)
+			productTotal[b][p] = 0;
+			for (w = 0; w < WEEKS; w++)
 			{
-				total[s][st] = total[s][st] + marks[s][st][sub];
+				productTotal[b][p] = productTotal[b][p] + sales[b][p][w];
+				branchTotal[b] = branchTotal[b] + sales[b][p][w];
+				weekTotal[w] = weekTotal[w] + sales[b][p][w];
 			}
-			average[s][st] = (float)total[s][st] / SUBJECTS;
-			sectionTotal[s] = sectionTotal[s] + total[s][st];
-		}
-		sectionAverage[s] = (float)sectionTotal[s] / (STUDENTS * SUBJECTS);
-	}
-
-	printf("\n\n----- Total and Average Marks of Each Student -----");
-	for (s = 0; s < SECTIONS; s++)
-	{
-		for (st = 0; st < STUDENTS; st++)
-		{
-			printf("\nSection %d - Student %d | Total: %d | Average: %.2f", s + 1, st + 1, total[s][st], average[s][st]);
 		}
 	}
 
-	
-	printf("\n\n----- Highest Scoring Student in Each Section -----");
-	for (s = 0; s < SECTIONS; s++)
+	printf("\n\n----- Total Quantity Sold for Each Product in Each Branch -----");
+	for (b = 0; b < BRANCHES; b++)
 	{
-		highestTotal = total[s][0];
-		for (st = 1; st < STUDENTS; st++)
+		for (p = 0; p < PRODUCTS; p++)
 		{
-			if (total[s][st] > highestTotal)
+			printf("\nBranch %d - Product %d: %d units", b + 1, p + 1, productTotal[b][p]);
+		}
+	}
+
+	printf("\n\n----- Highest Selling Product in Each Branch -----");
+	for (b = 0; b < BRANCHES; b++)
+	{
+		highest = productTotal[b][0];
+		for (p = 1; p < PRODUCTS; p++)
+		{
+			if (productTotal[b][p] > highest)
 			{
-				highestTotal = total[s][st];
+				highest = productTotal[b][p];
 			}
 		}
-		tieCount = 0;
-		for (st = 0; st < STUDENTS; st++)
+		if (highest == 0)
 		{
-			if (total[s][st] == highestTotal)
+			printf("\nBranch %d: No product was sold", b + 1);
+		}
+		else
+		{
+			tieCount = 0;
+			for (p = 0; p < PRODUCTS; p++)
 			{
-				tieCount++;
-				printf("\nSection %d: Student %d with total marks %d", s + 1, st + 1, highestTotal);
+				if (productTotal[b][p] == highest)
+				{
+					tieCount++;
+					printf("\nBranch %d: Product %d with %d units", b + 1, p + 1, highest);
+				}
 			}
-		}
-		if (tieCount > 1)
-		{
-			printf("\n(There is a tie in Section %d)", s + 1);
-		}
-	}
-
-
-	for (s = 0; s < SECTIONS; s++)
-	{
-		for (st = 0; st < STUDENTS; st++)
-		{
-			if (average[s][st] >= 50)
+			if (tieCount > 1)
 			{
-				passCount++;
+				printf("\n(There is a tie in Branch %d)", b + 1);
 			}
 		}
 	}
-	printf("\n\nNumber of students whose average is at least 50: %d", passCount);
-	if (passCount == 0)
+
+	printf("\n\n----- Overall Sales of Each Week -----");
+	for (w = 0; w < WEEKS; w++)
 	{
-		printf("\nNo student has an average of 50 or more");
+		printf("\nWeek %d: %d units", w + 1, weekTotal[w]);
 	}
-	else if (passCount == SECTIONS * STUDENTS)
+	highest = weekTotal[0];
+	for (w = 1; w < WEEKS; w++)
 	{
-		printf("\nAll students have an average of 50 or more");
+		if (weekTotal[w] > highest)
+		{
+			highest = weekTotal[w];
+		}
+	}
+	printf("\n\nWeek(s) with the highest overall sales (%d units):", highest);
+	for (w = 0; w < WEEKS; w++)
+	{
+		if (weekTotal[w] == highest)
+		{
+			printf(" Week %d", w + 1);
+		}
 	}
 
-
-	printf("\n\n----- Overall Average of Each Section -----");
-	for (s = 0; s < SECTIONS; s++)
+	printf("\n\n----- Total Quantity Sold by Each Branch -----");
+	for (b = 0; b < BRANCHES; b++)
 	{
-		printf("\nSection %d overall average: %.2f", s + 1, sectionAverage[s]);
+		printf("\nBranch %d: %d units", b + 1, branchTotal[b]);
 	}
-	if (sectionTotal[0] > sectionTotal[1])
+	if (branchTotal[0] > branchTotal[1])
 	{
-		printf("\n\nSection 1 has the highest overall average");
+		printf("\n\nBranch 1 sold the greatest quantity of products");
 	}
-	else if (sectionTotal[1] > sectionTotal[0])
+	else if (branchTotal[1] > branchTotal[0])
 	{
-		printf("\n\nSection 2 has the highest overall average");
+		printf("\n\nBranch 2 sold the greatest quantity of products");
 	}
 	else
 	{
-		printf("\n\nBoth sections have the same overall average");
+		printf("\n\nBoth branches sold the same quantity of products");
 	}
 	return 0;
 }
